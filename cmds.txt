@@ -1,0 +1,3 @@
+forest new <pseudo> <miner> <farmer> <hunter> <alchimiste>
+forest update <pseudo> <miner> <farmer> <hunter> <alchimiste>
+forest get <pseudo>
