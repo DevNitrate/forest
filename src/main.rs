@@ -36,6 +36,18 @@ fn get(pseudo: String) {
     }
 }
 
+fn update(pseudo: String) {
+    let mut path: String = String::from("./Users/");
+    path.push_str(&pseudo);
+    path.push_str(".json");
+
+    if Path::new(path.as_str()).exists() {
+        fs::remove_file(path).expect("Failed to delete file");
+    } else {
+        println!("Ce membre n'existe pas");
+    }
+}
+
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     if args.len() <= 1 {
@@ -91,13 +103,23 @@ fn main() {
             user.add();
         }
     } else if args[1] == "get" {
-        if args.len() < 3 || args.len() > 3 {
+        if args.len() != 3 {
             println!("Votre commande n'a pas le bon nombre d'arguments faites 'forest new help' pour plus");
         } else if args[2] == "help" {
             println!("Syntaxe de la commande: 'forest get <pseudo>'");
         } else {
             let pseudo: String = String::from(&args[2]);
             get(pseudo);
+        }
+    } else if args[1] == "remove" {
+        if args.len() != 3 {
+            println!("Votre commande n'a pas le bon nombre d'arguments faites 'forest new help' pour plus");
+        } else if args[2] == "help" {
+            println!("Syntaxe de la commande: 'forest remove <pseudo>'");
+        } else {
+            let pseudo: String = String::from(&args[2]);
+
+            update(pseudo);
         }
     }
 }
