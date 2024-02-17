@@ -84,7 +84,7 @@ fn main() {
                     println!("Syntaxe de la commande: 'forest update <pseudo> <miner> <farmer> <hunter> <alchimiste>'");
                 }
             } else {
-                println!("Votre commande n'a pas le bon nombre d'arguments faites 'forest new help' pour plus");
+                println!("Votre commande n'a pas le bon nombre d'arguments faites 'forest update help' pour plus");
             }
         } else {
             let pseudo: String = String::from(&args[2]);
@@ -104,7 +104,7 @@ fn main() {
         }
     } else if args[1] == "get" {
         if args.len() != 3 {
-            println!("Votre commande n'a pas le bon nombre d'arguments faites 'forest new help' pour plus");
+            println!("Votre commande n'a pas le bon nombre d'arguments faites 'forest get help' pour plus");
         } else if args[2] == "help" {
             println!("Syntaxe de la commande: 'forest get <pseudo>'");
         } else {
@@ -113,13 +113,23 @@ fn main() {
         }
     } else if args[1] == "remove" {
         if args.len() != 3 {
-            println!("Votre commande n'a pas le bon nombre d'arguments faites 'forest new help' pour plus");
+            println!("Votre commande n'a pas le bon nombre d'arguments faites 'forest remove help' pour plus");
         } else if args[2] == "help" {
             println!("Syntaxe de la commande: 'forest remove <pseudo>'");
         } else {
             let pseudo: String = String::from(&args[2]);
 
             update(pseudo);
+        }
+    } else if args[1] == "help" {
+        if args.len() != 2 {
+            println!("Votre commande n'a pas le bon nombre d'arguments faites 'forest new help' pour plus");
+        } else {
+            println!("Commandes:");
+            println!("pour ajouter un membre: forest new <pseudo> <miner> <farmer> <hunter> <alchimiste>");
+            println!("pour mettre a jour les niveaux: forest update <pseudo> <miner> <farmer> <hunter> <alchimiste>");
+            println!("pour voir les niveaux: forest get <pseudo>");
+            println!("pour supprimer un membre: forest remove <pseudo>");
         }
     }
 }
