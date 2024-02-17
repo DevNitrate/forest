@@ -131,5 +131,7 @@ fn main() {
             println!("pour voir les niveaux: forest get <pseudo>");
             println!("pour supprimer un membre: forest remove <pseudo>");
         }
+    } else {
+        println!("Commande inconnue faites 'forest help' pour plus");
     }
 }
